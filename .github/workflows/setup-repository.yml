@@ -18,7 +18,7 @@ jobs:
             | jq --exit-status '.is_template == false';
       - uses: actions/checkout@v3
 
-      - uses: actions/github-issue-parser@v3
+      - uses: stefanbuck/github-issue-parser@v3
         id: template
         with:
           template-path: .github/ISSUE_TEMPLATE/initialize.yml
