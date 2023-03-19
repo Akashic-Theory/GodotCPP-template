@@ -7,6 +7,8 @@ jobs:
   setup:
     name: Reinitialize repository
     runs-on: ubuntu-latest
+    env:
+      REPO_SETUP_TOKEN: ${{ secrets.REPO_SETUP_TOKEN }}
     steps:
       - name: Do not run scaffolding on template repository
         shell: bash
@@ -17,6 +19,8 @@ jobs:
             https://api.github.com/repos/$GITHUB_REPOSITORY \
             | jq --exit-status '.is_template == false';
       - uses: actions/checkout@v3
+        with:
+          token: ${{ env.REPO_SETUP_TOKEN || secrets.GITHUB_TOKEN }}
 
       - uses: stefanbuck/github-issue-parser@v3
         id: template
@@ -73,3 +77,14 @@ jobs:
           git add . && \
           git commit -m 'Initial commit' && \
           git push origin temp-branch:main -f
+
+      - name: Remove secret REPO_SETUP_TOKEN
+        # After re-initializing the repository, we can remove the `REPO_SETUP_TOKEN` secret.
+        shell: bash
+        if: ${{ env.REPO_SETUP_TOKEN }}
+        run: |
+          curl \
+            -X DELETE --fail \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: token ${{ env.REPO_SETUP_TOKEN }}" \
+            https://api.github.com/repos/$GITHUB_REPOSITORY/actions/secrets/REPO_SETUP_TOKEN
