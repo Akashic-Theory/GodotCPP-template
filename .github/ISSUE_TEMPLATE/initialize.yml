@@ -1,0 +1,17 @@
+name: Initialize
+description: Triggers workflow to intialize repo
+title: "INIT"
+body:
+  - type: input
+    id: project
+    attributes:
+      label: Project Name
+    validations:
+      required: true
+  - type: input
+    id: entry_symbol
+    attributes:
+      label: Library Entry Symbol
+      placeholder: gameplay_library_init
+    validations:
+      required: true

@@ -1,0 +1,8 @@
+[configuration]
+
+entry_symbol = "{{cookiecutter.entry_symbol}}"
+
+[libraries]
+
+windows.debug.x86_64="bin/windows/{{ cookiecutter.project.lower() }}_d.dll"
+windows.release.x86_64="bin/windows/{{ cookiecutter.project.lower() }}.dll"
