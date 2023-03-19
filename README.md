@@ -13,9 +13,8 @@
 1. Enable read and write workflow permissions for this repo at the bottom of the page <a href="../../settings/actions">here</a>
 
 OR
-1. Go to the <a href="https://github.com/settings/personal-access-tokens/new">personal access token</a> page
-1. Under `Repository access`, select `All repositories` or select this repository under `Only select repositories`
-1. Under `Permissions > Repository Permissions > Workflows`, select `Read and write` access
+1. Go to the <a href="https://github.com/settings/tokens/new">personal access token</a> page
+1. Select the `workflow` scope
 1. Generate your token
 1. Copy the token. Save this somewhere if you want to reuse this token later
 1. Create <a href="../../settings/secrets/actions/new">a new repository secret</a> named `REPO_SETUP_TOKEN` and paste your token there
