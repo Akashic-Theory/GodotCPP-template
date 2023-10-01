@@ -1,8 +1,11 @@
 [configuration]
 
 entry_symbol = "{{cookiecutter.entry_symbol}}"
+compatibility_minimum = "4.1"
 
 [libraries]
 
-windows.debug.x86_64="bin/windows/{{ cookiecutter.project.lower() }}_d.dll"
-windows.release.x86_64="bin/windows/{{ cookiecutter.project.lower() }}.dll"
+windows.debug.x86_64="res://gameplay/bin/windows/{{ cookiecutter.project.lower() }}_d.dll"
+windows.release.x86_64="res://gameplay/bin/windows/{{ cookiecutter.project.lower() }}.dll"
+linux.debug.x86_64="res://gameplay/bin/linux/{{ cookiecutter.project.lower() }}_d.so"
+linux.release.x86_64="res://gameplay/bin/linux/{{ cookiecutter.project.lower() }}.so"

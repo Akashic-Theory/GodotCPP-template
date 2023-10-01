@@ -16,7 +16,7 @@ void unregister_gameplay_types(godot::ModuleInitializationLevel level) {
 }
 
 extern "C" {
-    GDExtensionBool GDE_EXPORT {{cookiecutter.entry_symbol}}(const GDExtensionInterface* interface, const GDExtensionClassLibraryPtr library, GDExtensionInitialization* initialization) {
+    GDExtensionBool GDE_EXPORT {{cookiecutter.entry_symbol}}(GDExtensionInterfaceGetProcAddress interface, GDExtensionClassLibraryPtr library, GDExtensionInitialization* initialization) {
         godot::GDExtensionBinding::InitObject init_object(interface, library, initialization);
         init_object.register_initializer(register_gameplay_types);
         init_object.register_terminator(unregister_gameplay_types);
